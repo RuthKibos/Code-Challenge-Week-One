@@ -12,6 +12,30 @@ function studentMarks(mark) {
         return 'E';
     }
 }
+// Speed Detector algorithm
+function speedDetector(speed){
+    if(speed < 70){
+      return "Ok"
+    } else if(speed >= 70){
+      let difference = speed - 70
+      let demeritPoints = Math.floor(difference / 5)
+      let total = `${demeritPoints} Demerit Points`
+      if(demeritPoints >=0 && demeritPoints <= 12){
+        judgement= "Warning Issued"
+      } else if(demeritPoints > 12){
+        judgement = "License suspended"
+      }
+      console.log(total)
+      return judgement
+    }
+  }
+  //Prompts user to input speed using prompt-sync extension
+  const prompt = require('prompt-sync')();
+  const speed = prompt('Enter car speed: ')
+  // Returns vehicle speed, Demerit Points(if any), and a Judgement
+  console.log(`${Number(speed)} km/s`);
+  console.log(speedDetector(Number(speed)));
+
 //Net Salary Calculator.
 function grossSalary (mSalary) {
     }
@@ -42,6 +66,30 @@ if (grossSalary<= 5999) {
     nhifDeduction=500;
 }else if (grossSalary >=15000 && grossSalary <= 19999) {
     nhifDeduction=600; 
-}else if(grossSalary >=20000 && grossSalary <= 24999)
-    nhifDeduction=700; 
-}
+}else if(grossSalary >=20000 && grossSalary <= 24999) {
+    nhifDeduction=750; 
+}else if(grossSalary >=25000 && grossSalary <= 34999) {
+    nhifDeduction=800;
+}else if(grossSalary >=35000 && grossSalary <= 39999) {
+    nhifDeduction=850;
+}else if(grossSalary >=40000 && grossSalary<= 44999 ) {
+    nhifDeduction=900;
+}else if(grossSalary >=45000 && grossSalary<= 49999 ) {
+    nhifDeduction=950;
+} else if(grossSalary >=50000 && grossSalary<= 54999 ) {
+    nhifDeduction=1000;
+} else if(grossSalary >=55000 && grossSalary<= 59999 ) {
+    nhifDeduction=1000;
+}else if(grossSalary >=60000 && grossSalary<= 64999 ) {
+    nhifDeduction=1100;
+}else if(grossSalary >=65000 && grossSalary<= 69999 ) {
+    nhifDeduction=1200;
+}else if(grossSalary >=70000 && grossSalary<= 74999 ) {
+    nhifDeduction=1300;
+}else if(grossSalary >=75000 && grossSalary<= 79999 ) {
+    nhifDeduction=1400;
+}else if(grossSalary >=80000 && grossSalary<= 84999 ) {
+    nhifDeduction=1500;
+}else if(grossSalary >=85000 && grossSalary<= 89999 ) {
+    nhifDeduction=1600; 
+}    
