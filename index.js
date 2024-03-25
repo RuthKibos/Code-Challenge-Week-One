@@ -54,42 +54,65 @@ else if (mSalary >= 500001 && mSalary <= 800000) {
 else {
     return mSalary * 0.35;
 }
-//nhifDeductions
-function Deductions(nhifDeduction) {
-if (grossSalary<= 5999) {
-    nhifDeduction=150;
-}else if (grossSalary >= 6000 && grossSalary <= 7999) {
-    nhifDeduction=300;
-}else if (grossSalary >= 8000 && grossSalary <= 11999) {
-    nhifDeduction=400;
-}else if (grossSalary >=12000 && grossSalary <= 14999) {
-    nhifDeduction=500;
-}else if (grossSalary >=15000 && grossSalary <= 19999) {
-    nhifDeduction=600; 
-}else if(grossSalary >=20000 && grossSalary <= 24999) {
-    nhifDeduction=750; 
-}else if(grossSalary >=25000 && grossSalary <= 34999) {
-    nhifDeduction=800;
-}else if(grossSalary >=35000 && grossSalary <= 39999) {
-    nhifDeduction=850;
-}else if(grossSalary >=40000 && grossSalary<= 44999 ) {
-    nhifDeduction=900;
-}else if(grossSalary >=45000 && grossSalary<= 49999 ) {
-    nhifDeduction=950;
-} else if(grossSalary >=50000 && grossSalary<= 54999 ) {
-    nhifDeduction=1000;
-} else if(grossSalary >=55000 && grossSalary<= 59999 ) {
-    nhifDeduction=1000;
-}else if(grossSalary >=60000 && grossSalary<= 64999 ) {
-    nhifDeduction=1100;
-}else if(grossSalary >=65000 && grossSalary<= 69999 ) {
-    nhifDeduction=1200;
-}else if(grossSalary >=70000 && grossSalary<= 74999 ) {
-    nhifDeduction=1300;
-}else if(grossSalary >=75000 && grossSalary<= 79999 ) {
-    nhifDeduction=1400;
-}else if(grossSalary >=80000 && grossSalary<= 84999 ) {
-    nhifDeduction=1500;
-}else if(grossSalary >=85000 && grossSalary<= 89999 ) {
-    nhifDeduction=1600; 
-}    
+// Function to calculate NHIF Deductions based on the provided salary
+function calculateNHIF(salary) {
+    let nhif = 0;
+    if (salary <= 5999) {
+        nhif = 150;
+    } else if (salary <= 7999) {
+        nhif = 300;
+    } else if (salary <= 11999) {
+        nhif = 400;
+    } else if (salary <= 14999) {
+        nhif = 500;
+    } else if (salary <= 19999) {
+        nhif = 600;
+    } else if (salary <= 24999) {
+        nhif = 750;
+    } else if (salary <= 29999) {
+        nhif = 850;
+    } else if (salary <= 34999) {
+        nhif = 900;
+    } else if (salary <= 39999) {
+        nhif = 950;
+    } else if (salary <= 44999) {
+        nhif = 1000;
+    } else if (salary <= 49999) {
+        nhif = 1100;
+    } else if (salary <= 59999) {
+        nhif = 1200;
+    } else if (salary <= 69999) {
+        nhif = 1300;
+    } else if (salary <= 79999) {
+        nhif = 1400;
+    } else if (salary <= 89999) {
+        nhif = 1500;
+    } else if (salary <= 99999) {
+        nhif = 1600;
+    } else {
+        nhif = 1700;
+    }
+    return nhif;
+}
+
+// Function to calculate NSSF Deductions based on the provided salary
+function calculateNSSF(salary) {
+    // NSSF rate is 6% of gross salary, with a maximum limit of 2000
+    let nssf = Math.min(salary * 0.06, 2000);
+    return nssf;
+}
+
+// Function to calculate the Net Salary
+function calculateNetSalary(basicSalary, benefits) {
+    const grossSalary = basicSalary + benefits;
+    const paye = calculatePAYE(grossSalary);
+    const nhif = calculateNHIF(basicSalary);
+    const nssf = calculateNSSF(basicSalary);
+    const deductions = paye + nhif + nssf;
+    const netSalary = grossSalary - deductions;
+    return { grossSalary, paye, nhif, nssf, deductions, netSalary };
+}
+
+
+
+
