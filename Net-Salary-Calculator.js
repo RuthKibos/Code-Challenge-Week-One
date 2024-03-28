@@ -70,9 +70,3 @@ function calculateNetSalary(basicSalary, benefits) {
     const netSalary = grossPay - payee - nhif - nssf;
     return netSalary;
 }
-
-// Example usage:
-const basicSalary = 50000; // Example basic salary
-const benefits = 10000; // Example benefits
-const netSalary = calculateNetSalary(basicSalary, benefits);
-console.log("Net Salary:", netSalary);
